@@ -48,17 +48,17 @@
                     <span>Dashboard</span></a>
             </li>
 
-            <hr class="sidebar-divider">
+            <!-- <hr class="sidebar-divider">
             <div class="sidebar-heading">
                 Interface
-            </div>
+            </div> -->
 
             <li class="nav-item ">
                 <a class="nav-link" href="index.html">
                 <i class="fas fa-check"></i>
                     <span>Verifikasi Pengaduan</span></a>
             </li>
-
+<!-- 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -75,7 +75,7 @@
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
