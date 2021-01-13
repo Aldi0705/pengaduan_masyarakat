@@ -56,8 +56,8 @@
                                                     id="password-confirm" placeholder="Repeat Password" name="password_confirmation" required autocomplete="new-password">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-user btn-block btn-primary" href="{{route('login')}}>
-                                            {{ __('Register') }}
+                                        <button type="submit" class="btn btn-user btn-block btn-primary" href="{{route('login')}}">
+                                            {{ __('daftar') }}
                                         </button>
                                     </form>
                                     <hr>

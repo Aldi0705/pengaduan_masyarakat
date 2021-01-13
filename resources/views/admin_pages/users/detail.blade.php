@@ -11,7 +11,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Edit Pengguna</h6>
         <a href="{{route('pengguna.index')}}" class="btn btn-primary float-right">Kembali</a>
     </div>
-    <div class="card-body">
+    <div class="card-body justify-content-center">
         <form class="user" action="{{route('pengguna.update',['id' => $user->id])}}" method="post">
             @csrf
             {{method_field('patch')}}

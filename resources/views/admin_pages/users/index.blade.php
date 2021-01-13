@@ -7,7 +7,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">List Pengguna</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
         <a href="{{route('pengguna.create')}}" class="btn btn-primary btn-sm float-right">
         <i class="fas fa-user-plus"></i>
             Tambah Pengguna
@@ -23,7 +23,7 @@
                         <th>Addres</th>
                         <th>Phone</th>
                         <th>Rule</th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +42,9 @@
                             
                             <a href="{{route('pengguna.edit',['id'=>$users->id])}}" class="btn btn-success btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <a href="{{route('pengguna.destroy',['id'=>$users->id])}}" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
                     </tr>

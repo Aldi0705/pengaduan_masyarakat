@@ -98,7 +98,7 @@ class UserController extends Controller
         $user -> update ([
             'name' => $request->nama,
             'email' => $request->email,
-            'password' => Hash::make($request -> password),
+            'password' => is_null($request->password)? $user->password : Hash::make($request->password),
             'role'  => $request->role,
             'address' => $request->address,
             'telp' => $request->telp
@@ -116,6 +116,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        
+        return view ('admin_pages.users.delete');
     }
 }

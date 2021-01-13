@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('frontend_assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <script src="{{asset('frontend_assets/ckeditor/ckeditor.js')}}"></script>
 
 </head>
 
@@ -63,7 +64,11 @@
                 <i class="fas fa-users"></i>
                     <span>Pengguna</span></a>
             </li>
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
 <!-- 
+    
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
@@ -206,6 +211,9 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('frontend_assets/js/demo/datatables-demo.js')}}"></script>
+    <script>
+        CKEDITOR.replace('address-editor');
+    </script>
 </body>
 
 </html>

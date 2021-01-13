@@ -24,7 +24,7 @@ class ComplaintController extends Controller
      */
     public function index()
     {
-        $complaints = Complaint::paginate('15');
+        $complaints = Complaint::with(['user'])->paginate('15');
         return view('admin_pages.complaints.index', compact('complaints'));
     }
 
@@ -46,7 +46,16 @@ class ComplaintController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Complaint::create([
+            'user_id' => $request->user_id,
+            'nik' => $request->nik,
+            'isi_laporan' => $request->isi_laporan,
+            'foto'  => $request->foto,
+            'status' => 'new'
+        ]);
+
+
+        return  redirect (route('pengguna.index'));
     }
 
     /**
@@ -68,7 +77,8 @@ class ComplaintController extends Controller
      */
     public function edit($id)
     {
-        //
+        $complaint = Complaint::find($id);
+        return view('admin_pages.users.edit', compact('complaint'));
     }
 
     /**

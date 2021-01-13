@@ -7,9 +7,16 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">List Pengguna</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Pengaduan</h6>
+        @if (Auth::user()->role === 'user')
+        <a href="{{route('pengaduan.create')}}" class="btn btn-primary btn-sm float-right">
+            <i class="fas fa-user-plus"></i>
+            Tambah Pengaduan
+        </a>
+        @endif
     </div>
     <div class="card-body">
+    @if (Auth::user()->role === 'user')
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -18,23 +25,23 @@
                         <th>Nik</th>
                         <th>Isi Laporan</th>
                         <th>Foto</th>
-                        <th></th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($complaints as $complaints)
+                    @foreach($complaints as $complaint)
 
                     <tr>
-                        <td>{{$complaints->user_id}}</td>
-                        <td>{{$complaints->nik}}</td>
-                        <td>{{$complaints->isi_laporan}}</td>
-                        <td>{{$complaints->foto}}</td>
+                        <td>{{$complaint->user->name}}</td>
+                        <td>{{$complaint->nik}}</td>
+                        <td>{{$complaint->isi_laporan}}</td>
+                        <td>{{$complaint->foto}}</td>
                         <td>
-                            <a href="{{route('pengguna.show',['id'=>$users->id])}}" class="btn btn-info btn-sm">
+                            <a href="{{route('pengaduan.show',['id'=>$complaint->id])}}" class="btn btn-info btn-sm">
                                 <i class="fa fa-info"></i>
                             </a>
                             
-                            <a href="{{route('pengguna.edit',['id'=>$users->id])}}" class="btn btn-success btn-sm">
+                            <a href="{{route('pengaduan.edit',['id'=>$complaint->id])}}" class="btn btn-success btn-sm">
                             <i class="fas fa-pencil-alt"></i>
                             </a>
                         </td>
@@ -42,6 +49,7 @@
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
     </div>
 </div>

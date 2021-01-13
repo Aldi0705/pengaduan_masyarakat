@@ -7,16 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Complaint extends Model
 {
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'telp', 'address'
+        'user_id', 'nik', 'isi_laporan', 'foto'
     ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'name' => 'string',
-        'email' => 'string',
-        'password' => 'string',
-        'role' => 'string',
-        'telp' => 'string',
-        'address' => 'string'
+        'user_id' => 'integer',
+        'nik' => 'string',
+        'isi_laporan' => 'string',
+        'foto' => 'string'
     ];
+
+    public function user ()
+    {
+        return $this->belongsto('App\User', 'user_id');
+    }
 }
