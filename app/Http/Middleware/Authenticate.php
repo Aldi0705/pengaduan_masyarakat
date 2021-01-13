@@ -18,4 +18,8 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
+    // public function __construct()
+    //     {
+    //         $this->middleware('auth:admin');
+    //     }
 }
