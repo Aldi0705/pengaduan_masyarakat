@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class UserController extends Controller
@@ -47,7 +48,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       User::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'password' => Hash::make($request -> password),
+            'role'  => $request->role,
+            'address' => $request->address,
+            'telp' => $request->telp
+        ]);
+
+
+        return  redirect (route('pengguna.index'));
     }
 
     /**
@@ -58,7 +69,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin_pages.users.edit', compact('user'));
     }
 
     /**
@@ -69,7 +81,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin_pages.users.edit', compact('user'));
     }
 
     /**
@@ -81,7 +94,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user -> update ([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'password' => Hash::make($request -> password),
+            'role'  => $request->role,
+            'address' => $request->address,
+            'telp' => $request->telp
+        ]);
+
+
+        return  redirect (route('pengguna.index'));
     }
 
     /**

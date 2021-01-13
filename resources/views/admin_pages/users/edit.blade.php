@@ -8,40 +8,41 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Tambah Pengguna</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Edit Pengguna</h6>
         <a href="{{route('pengguna.index')}}" class="btn btn-primary float-right">Kembali</a>
     </div>
     <div class="card-body">
-        <form class="user" action="{{route('pengguna.store')}}" method="post">
+        <form class="user" action="{{route('pengguna.update',['id' => $user->id])}}" method="post">
             @csrf
+            {{method_field('patch')}}
             <div class="form-group">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control form-control-user" id="nama" name="nama"
-                        placeholder="Masukan Nama" required="required">
+                    <input type="text" class="form-control form-control-user" value="{{ $user->name }}" id="nama" name="nama"
+                        placeholder="Edit Nama" required="required">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control form-control-user" name="email"
-                        id="email" placeholder="Masukan Email"required="required" >
+                    <input type="email" class="form-control form-control-user" name="email" value="{{ $user->email}}"
+                        id="email" placeholder="Edit Email"required="required" >
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="telp">No Telpon</label>
-                    <input type="telp" class="form-control form-control-user" name="telp"
-                        id="telp" placeholder="Masukan No Telpon"required="required" >
+                    <input type="telp" class="form-control form-control-user" name="telp" 
+                        id="telp" placeholder="Edit No Telepon"required="required" value="{{$user->telp}}">
                 </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="password"> Password</label>
-                    <input type="password" class="form-control form-control-user" name="password"
-                        id="password" placeholder="Masukan Password"required="required">
+                <label for="password">Password</label>
+                    <input type="password" class="form-control form-control-user" name="password" v
+                        id="password" placeholder="Edit Password"required="required">
                 </div>
-            </div>
+            </div> -->
             <div class="form-group">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="role">Role</label>
@@ -54,11 +55,11 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="alamat">Alamat</label>
-                    <textarea name="address" id="address" class="form-control" cols="30" rows="10" placeholder="Masukan Alamat"></textarea>
+                <label for="alamat">Masukan Alamat</label>
+                    <textarea name="address" id="address" class="form-control" cols="30" rows="10" placeholder="Edit Alamat" value="{{$user->address}}"></textarea>
                 </div>
             </div>
-            <button class="btn btn-info text-white">Tambah Pengguna</button>
+            <button class="btn btn-info text-white">Perbarui</button>
         </form>
     </div>
 </div>

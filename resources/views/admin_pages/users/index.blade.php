@@ -22,6 +22,7 @@
                         <th>Email</th>
                         <th>Addres</th>
                         <th>Phone</th>
+                        <th>Rule</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -33,6 +34,7 @@
                         <td>{{$users->email}}</td>
                         <td>{{$users->address}}</td>
                         <td>{{$users->telp}}</td>
+                        <td>{{$users->role}}</td>
                         <td>
                             <a href="{{route('pengguna.show',['id'=>$users->id])}}" class="btn btn-info btn-sm">
                                 <i class="fa fa-info"></i>

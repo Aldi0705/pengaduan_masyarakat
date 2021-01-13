@@ -17,7 +17,16 @@
 
 Auth::routes();
 
+
 Route::get('/', 'HomeController@index')->name('home');
+
+//user
 Route::resource('/pengguna', 'UserController');
+Route::post('/pengguna/create', 'UserController@create');
+Route::post('/pengguna/store','UserController@store');
+Route::patch('/pengguna/update','UserController@update');
+
+
+//complain
 Route::resource('/pengaduan', 'ComplaintController');
 // Route::get('/table', 'TableController@index');
