@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Complaint;
+Use Auth;
 
 class ComplaintController extends Controller
 {
@@ -46,16 +47,24 @@ class ComplaintController extends Controller
      */
     public function store(Request $request)
     {
+        $file = $request->file('file');
+ 
+        $nama_file = time()."_".$file->getClientOriginalName();
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'data_file';
+        $file->move($tujuan_upload,$nama_file);
+ 
+      	// isi dengan nama folder tempat kemana file diupload
         Complaint::create([
-            'user_id' => $request->user_id,
-            'nik' => $request->nik,
+            'user_id' => Auth::id(),
+            'nik' => Auth::id(),
             'isi_laporan' => $request->isi_laporan,
-            'foto'  => $request->foto,
+            'foto'  => $nama_file,
             'status' => 'new'
         ]);
 
 
-        return  redirect (route('pengguna.index'));
+        return  redirect (route('pengaduan.index'));
     }
 
     /**
@@ -78,7 +87,7 @@ class ComplaintController extends Controller
     public function edit($id)
     {
         $complaint = Complaint::find($id);
-        return view('admin_pages.users.edit', compact('complaint'));
+        return view('admin_pages.complaints.edit', compact('complaint'));
     }
 
     /**
@@ -90,7 +99,36 @@ class ComplaintController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $complaint = Complaint::find($id);
+        $nama_file = null;
+        if ($request->file('file')) {
+            $file = $request->file('file');
+ 
+            $nama_file = time()."_".$file->getClientOriginalName();
+    
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'data_file';
+            $file->move($tujuan_upload,$nama_file);
+        } else {
+            $nama_file = $complaint->foto;
+        }
+        
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName();
+            $file->move(asset('data_file/'), $filename);
+        }
+        else {
+            $nama_file = $complaint->foto;
+        }
+
+        $complaint->update([    
+            'isi_laporan' => $request->isi_laporan,
+            'foto'  => $nama_file,
+            'status' => 'new'
+        ]);
+
+        return  redirect (route('pengaduan.index'));
     }
 
     /**

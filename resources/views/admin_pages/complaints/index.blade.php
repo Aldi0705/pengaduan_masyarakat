@@ -18,14 +18,14 @@
     <div class="card-body">
     @if (Auth::user()->role === 'user')
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" width="110%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Nama Pelapor</th>
                         <th>Nik</th>
                         <th>Isi Laporan</th>
                         <th>Foto</th>
-                        <th>Status</th>
+                        <th collspan="100%">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,8 +34,8 @@
                     <tr>
                         <td>{{$complaint->user->name}}</td>
                         <td>{{$complaint->nik}}</td>
-                        <td>{{$complaint->isi_laporan}}</td>
-                        <td>{{$complaint->foto}}</td>
+                        <td>{!! $complaint->isi_laporan !!}</td>
+                        <td><img src="{{asset('data_file/'.$complaint->foto)}}" width="300" alt=""></td>
                         <td>
                             <a href="{{route('pengaduan.show',['id'=>$complaint->id])}}" class="btn btn-info btn-sm">
                                 <i class="fa fa-info"></i>
@@ -43,6 +43,9 @@
                             
                             <a href="{{route('pengaduan.edit',['id'=>$complaint->id])}}" class="btn btn-success btn-sm">
                             <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <a href="{{route('pengaduan.destroy',['id'=>$complaint->id])}}" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
                     </tr>

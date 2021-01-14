@@ -8,10 +8,12 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
+        @if (Auth::user()->role === 'admin')
         <a href="{{route('pengguna.create')}}" class="btn btn-primary btn-sm float-right">
         <i class="fas fa-user-plus"></i>
             Tambah Pengguna
         </a>
+        @endif
     </div>
     <div class="card-body">
         <div class="table-responsive">

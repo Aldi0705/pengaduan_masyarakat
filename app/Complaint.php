@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Complaint extends Model
 {
     protected $fillable = [
-        'user_id', 'nik', 'isi_laporan', 'foto'
+        'user_id', 'nik', 'isi_laporan', 'foto', 'status'
     ];
 
     protected $casts = [
@@ -15,7 +15,8 @@ class Complaint extends Model
         'user_id' => 'integer',
         'nik' => 'string',
         'isi_laporan' => 'string',
-        'foto' => 'string'
+        'foto' => 'string',
+        'status' => 'string'
     ];
 
     public function user ()

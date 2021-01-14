@@ -40,7 +40,7 @@
                 <div class="col-sm-12 mb-3 mb-sm-0">
                 <label for="password">Password</label>
                     <input type="password" class="form-control form-control-user" name="password" v
-                        id="password" placeholder="Edit Password"required="required">
+                        id="password" placeholder="Edit Password">
                 </div>
             </div>
             <div class="form-group row">
