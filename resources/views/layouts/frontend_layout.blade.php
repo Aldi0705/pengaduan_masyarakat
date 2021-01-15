@@ -53,17 +53,20 @@
             <div class="sidebar-heading">
                 Interface
             </div> -->
-
+            @if (Auth::user()->role === 'user')
             <li class="nav-item ">
                 <a class="nav-link" href="{{route('pengaduan.index')}}">
                 <i class="fas fa-book"></i>
                     <span>Pengaduan</span></a>
             </li>
+            @endif
+            @if (Auth::user()->role === 'admin')
             <li class="nav-item ">
                 <a class="nav-link" href="{{route('pengguna.index')}}">
                 <i class="fas fa-users"></i>
                     <span>Pengguna</span></a>
             </li>
+            @endif
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>

@@ -34,7 +34,7 @@
                     <tr>
                         <td>{{$users->name}}</td>
                         <td>{{$users->email}}</td>
-                        <td>{{$users->address}}</td>
+                        <td>{!! $users->address !!}</td>
                         <td>{{$users->telp}}</td>
                         <td>{{$users->role}}</td>
                         <td>
